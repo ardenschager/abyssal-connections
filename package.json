@@ -1,0 +1,23 @@
+{
+  "name": "gray-area-final-project",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "js-markov": "^3.0.3",
+    "nodemon": "^2.0.4",
+    "postprocessing": "^6.28.1",
+    "random-words": "^1.2.0",
+    "request": "^2.88.2",
+    "socket.io": "^4.5.1",
+    "three": "^0.141.0",
+    "uuid": "^8.3.2",
+    "yuka": "^0.7.7"
+  },
+  "engines": {
+    "node": "16.x"
+  }
+}

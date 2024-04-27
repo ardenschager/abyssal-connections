@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Abyssal Poetics</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script src="../js/libs/socket.io.js"></script>
@@ -29,35 +30,42 @@
     <script src="../js/aquarium/room.js"></script>
     <script src="../js/aquarium/post.js"></script>
     <script src="../js/aquarium/particles.js"></script>
-  </head>
-  <body>
-    <a-scene renderer="antialias: true">
-      <a-assets>
-        <a-asset-item id="room" src="../assets/models/room.glb"></a-asset-item>
-      </a-assets>
+    <script>
+        // Ensure A-Frame does not automatically enter VR mode.
+        AFRAME.scenes[0].addEventListener('loaded', function () {
+            AFRAME.scenes[0].vrModeUIEnabled = false; // Disable the VR mode UI
+        });
 
-      <a-entity 
-        camera="active: true" 
-        position="0 0 25"
-        fov="5">
-      </a-entity>
-      
-      <a-entity 
-        scene-manager>
-      </a-entity>
+        // Fullscreen toggle with 'F' key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'f' || e.key === 'F') {
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen();
+                } else {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    }
+                }
+            }
+        });
+    </script>
+</head>
 
-      <a-entity 
-        particles>
-      </a-entity>
+<body>
+    <a-scene renderer="antialias: true" vr-mode-ui="enabled: false">
+        <a-assets>
+            <a-asset-item id="room" src="../assets/models/room.glb"></a-asset-item>
+        </a-assets>
 
-      <a-entity 
-        gltf-model="#room"
-        scale="250 400 250"
-        position="0 0 -25"
-        rotation="0 -90 0"
-        room>
-      </a-entity>
+        <a-entity camera="active: true" position="0 0 25" fov="5">
+        </a-entity>
+
+        <a-entity scene-manager></a-entity>
+        <a-entity particles></a-entity>
+        <a-entity gltf-model="#room" scale="250 400 250" position="0 0 -25" rotation="0 -90 0" room>
+        </a-entity>
 
     </a-scene>
-  </body>
+</body>
+
 </html>
